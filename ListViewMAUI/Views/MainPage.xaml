@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewMAUI"
+            xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             x:Class="ListViewMAUI.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CreateContactsCommand}" IconImageSource="add.png">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.BindingContext>
+        <local:ContactsViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:TextConverter x:Key="TextConverter"/>
+            <local:ColorConverter x:Key="ColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+    <syncfusion:SfListView x:Name="listView"  
+                                TapCommand="{Binding EditContactsCommand}"
+                                ScrollBarVisibility="Always"
+                                ItemSize="70">
+        <syncfusion:SfListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <Grid x:Name="grid" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <Grid RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{Binding ContactImage}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="50" WidthRequest="50"/>
+
+                                <Grid Grid.Column="1"
+                        RowSpacing="1"
+                        Padding="10,0,0,0"
+                        VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label LineBreakMode="NoWrap"
+                                                TextColor="#474747"
+                                                Text="{Binding ContactName}"
+                                                FontSize="{OnPlatform Android={OnIdiom Phone=16, Tablet=18}, iOS={OnIdiom Phone=16, Tablet=18}, MacCatalyst=18, WinUI={OnIdiom Phone=18, Tablet=20, Desktop=20}}" />
+                                    <Label Grid.Row="1"
+                                                Grid.Column="0"
+                                                TextColor="#474747"
+                                                LineBreakMode="NoWrap"
+                                                Text="{Binding ContactNumber}"
+                                                FontSize="{OnPlatform Android={OnIdiom Phone=12, Tablet=14}, iOS={OnIdiom Phone=12, Tablet=14}, MacCatalyst=14, WinUI={OnIdiom Phone=12, Tablet=12, Desktop=12}}" />
+                                </Grid>
+                                <Grid Grid.Row="0"
+                        Grid.Column="2"
+                        RowSpacing="0"
+                        HorizontalOptions="End" VerticalOptions="Start"
+                                            Padding='{OnPlatform Default="0,10,10,0", MacCatalyst="0,10,15,0"}'>
+                                    <Label LineBreakMode="NoWrap"
+                                                TextColor="#474747"
+                                                Text="{Binding ContactType}"
+                                                FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=12}, iOS={OnIdiom Phone=10, Tablet=12}, MacCatalyst=12, WinUI={OnIdiom Phone=10, Tablet=11, Desktop=11}}" />
+                                </Grid>
+                            </Grid>
+                            <StackLayout Grid.Row="1" BackgroundColor="#E4E4E4" HeightRequest="1"/>
+                        </Grid>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+    </syncfusion:SfListView>
+    </ContentPage.Content>
+</ContentPage>
