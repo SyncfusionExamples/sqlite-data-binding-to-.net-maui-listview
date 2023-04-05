@@ -41,7 +41,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Image Source="{Binding ContactImage}"
+                                <Image Source="{Binding Image}"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         HeightRequest="50" WidthRequest="50"/>
@@ -57,13 +57,13 @@
 
                                     <Label LineBreakMode="NoWrap"
                                                 TextColor="#474747"
-                                                Text="{Binding ContactName}"
+                                                Text="{Binding Name}"
                                                 FontSize="{OnPlatform Android={OnIdiom Phone=16, Tablet=18}, iOS={OnIdiom Phone=16, Tablet=18}, MacCatalyst=18, WinUI={OnIdiom Phone=18, Tablet=20, Desktop=20}}" />
                                     <Label Grid.Row="1"
                                                 Grid.Column="0"
                                                 TextColor="#474747"
                                                 LineBreakMode="NoWrap"
-                                                Text="{Binding ContactNumber}"
+                                                Text="{Binding Number}"
                                                 FontSize="{OnPlatform Android={OnIdiom Phone=12, Tablet=14}, iOS={OnIdiom Phone=12, Tablet=14}, MacCatalyst=14, WinUI={OnIdiom Phone=12, Tablet=12, Desktop=12}}" />
                                 </Grid>
                                 <Grid Grid.Row="0"

@@ -8,13 +8,13 @@ namespace ListViewMAUI
     {
         #region Fields
 
-        private ObservableCollection<Contacts> contactsInfo;
-        private Contacts selectedContact;
+        private ObservableCollection<Contact> contactsInfo;
+        private Contact selectedContact;
 
         #endregion
 
         #region Properties
-        public Contacts SelectedItem
+        public Contact SelectedItem
         {
             get 
             {
@@ -26,7 +26,7 @@ namespace ListViewMAUI
                 OnPropertyChanged("SelectedItem");
             }
         }
-        public ObservableCollection<Contacts> ContactsInfo
+        public ObservableCollection<Contact> ContactsInfo
         {
             get
             {
@@ -63,10 +63,10 @@ namespace ListViewMAUI
 
         private void GenerateContacts()
         {
-            ContactsInfo = new ObservableCollection<Contacts>();
+            ContactsInfo = new ObservableCollection<Contact>();
             ContactsInfo = new ContactsInfoRepository().GetContactDetails(20);
 
-            foreach (Contacts contact in ContactsInfo)
+            foreach (Contact contact in ContactsInfo)
                 App.Database.AddContactAsync(contact);
         }
 
@@ -90,7 +90,7 @@ namespace ListViewMAUI
 
         private void OnEditContacts(object obj)
         {
-            SelectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as Contacts;
+            SelectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as Contact;
             var editPage = new Views.EditPage();
             editPage.BindingContext = this;
             App.Current.MainPage.Navigation.PushAsync(editPage);
@@ -98,7 +98,7 @@ namespace ListViewMAUI
 
         private void OnCreateContacts()
         {
-            SelectedItem = new Contacts() { ContactName = "", ContactNumber = "" };
+            SelectedItem = new Contact() { Name = "", Number = "", Image = "" };
             var editPage = new Views.EditPage();
             editPage.BindingContext = this;
             App.Current.MainPage.Navigation.PushAsync(editPage);

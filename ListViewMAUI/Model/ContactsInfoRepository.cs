@@ -21,22 +21,22 @@ namespace ListViewMAUI
 
         #region Get Contacts Details
 
-        public ObservableCollection<Contacts> GetContactDetails(int count)
+        public ObservableCollection<Contact> GetContactDetails(int count)
         {
-            ObservableCollection<Contacts> customerDetails = new ObservableCollection<Contacts>();
+            ObservableCollection<Contact> customerDetails = new ObservableCollection<Contact>();
             int girlsCount = 0, boysCount = 0;
             for (int i = 0; i < count; i++)
             {
-                var details = new Contacts()
+                var details = new Contact()
                 {                   
-                    ContactNumber = random.Next(100, 400).ToString() + "-" + random.Next(500, 800).ToString() + "-" + random.Next(1000, 2000).ToString(),
-                    ContactImage = "People_Circle" + (i % 19) + ".png",
+                    Number = random.Next(100, 400).ToString() + "-" + random.Next(500, 800).ToString() + "-" + random.Next(1000, 2000).ToString(),
+                    Image = "People_Circle" + (i % 19) + ".png",
                 };
 
                 if (imagePosition.Contains(i % 19))
-                    details.ContactName = CustomerNames_Boys[boysCount++ % 32];
+                    details.Name = CustomerNames_Boys[boysCount++ % 32];
                 else
-                    details.ContactName = CustomerNames_Girls[girlsCount++ % 93];
+                    details.Name = CustomerNames_Girls[girlsCount++ % 93];
 
                 customerDetails.Add(details);
             }

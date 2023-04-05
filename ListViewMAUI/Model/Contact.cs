@@ -9,49 +9,49 @@ using System.Threading.Tasks;
 
 namespace ListViewMAUI
 {
-    #region Contacts
-    public class Contacts : INotifyPropertyChanged
+    #region Contact
+    public class Contact : INotifyPropertyChanged
     {
         #region Fields
 
         public int id;
-        private string contactName;
-        private string contactNumber;
-        private string contactImage;
+        private string name;
+        private string number;
+        private string image;
 
         #endregion
 
         [PrimaryKey, AutoIncrement]
         [Display(AutoGenerateField = false)]
         public int ID { get; set; }
-        public string ContactName
+        public string Name
         {
-            get { return this.contactName; }
+            get { return this.name; }
             set
             {
-                this.contactName = value;
-                RaisePropertyChanged("ContactName");
+                this.name = value;
+                RaisePropertyChanged("Name");
             }
         }
 
-        public string ContactNumber
+        public string Number
         {
-            get { return contactNumber; }
+            get { return number; }
             set
             {
-                this.contactNumber = value;
-                RaisePropertyChanged("ContactNumber");
+                this.number = value;
+                RaisePropertyChanged("Number");
             }
         }
 
         [Display(AutoGenerateField = false)]
-        public string ContactImage
+        public string Image
         {
-            get { return this.contactImage; }
+            get { return this.image; }
             set
             {
-                this.contactImage = value;
-                this.RaisePropertyChanged("ContactImage");
+                this.image = value;
+                this.RaisePropertyChanged("Image");
             }
         }
 

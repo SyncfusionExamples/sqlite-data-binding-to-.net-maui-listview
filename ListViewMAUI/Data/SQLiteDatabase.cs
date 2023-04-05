@@ -9,25 +9,25 @@ namespace ListViewMAUI
         public SQLiteDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Contacts>().Wait();
+            _database.CreateTableAsync<Contact>().Wait();
         }
 
-        public Task<List<Contacts>> GetContactsAsync()
+        public Task<List<Contact>> GetContactsAsync()
         {
-            return _database.Table<Contacts>().ToListAsync();
+            return _database.Table<Contact>().ToListAsync();
         }
 
-        public Task<int> AddContactAsync(Contacts item)
+        public Task<int> AddContactAsync(Contact item)
         {
             return _database.InsertAsync(item);
         }
 
-        public Task<int> DeleteContactAsync(Contacts item)
+        public Task<int> DeleteContactAsync(Contact item)
         {
             return _database.DeleteAsync(item);
         }
 
-        public Task<int> UpdateContactAsync(Contacts item)
+        public Task<int> UpdateContactAsync(Contact item)
         {
             return _database.UpdateAsync(item);
         }
