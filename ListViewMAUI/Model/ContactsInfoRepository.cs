@@ -28,7 +28,8 @@ namespace ListViewMAUI
             for (int i = 0; i < count; i++)
             {
                 var details = new Contact()
-                {                   
+                {
+                    ID = i+1,
                     Number = random.Next(100, 400).ToString() + "-" + random.Next(500, 800).ToString() + "-" + random.Next(1000, 2000).ToString(),
                     Image = "People_Circle" + (i % 19) + ".png",
                 };

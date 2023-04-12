@@ -18,7 +18,7 @@ public partial class App : Application
         {
             if (database == null)
             {
-                database = new SQLiteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SQLLiteSample.db"));
+                database = new SQLiteDatabase();
             }
             return database;
         }

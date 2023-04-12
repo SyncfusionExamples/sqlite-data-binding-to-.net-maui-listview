@@ -61,24 +61,33 @@ namespace ListViewMAUI
 
         #region Methods
 
-        private void GenerateContacts()
+        private async void GenerateContacts()
         {
             ContactsInfo = new ObservableCollection<Contact>();
             ContactsInfo = new ContactsInfoRepository().GetContactDetails(20);
-
-            foreach (Contact contact in ContactsInfo)
-                App.Database.AddContactAsync(contact);
+            PopulateDB();
         }
 
+        private async void PopulateDB()
+        {
+            foreach (Contact contact in ContactsInfo)
+            {
+                var item = await App.Database.GetContactAsync(contact);
+                if(item == null)
+                   await App.Database.AddContactAsync(contact);
+            }
+        }
         private async void OnAddNewItem()
         {
             await App.Database.AddContactAsync(SelectedItem);
+            ContactsInfo.Add(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void OnDeleteItem()
         {
             await App.Database.DeleteContactAsync(SelectedItem);
+            ContactsInfo.Remove(SelectedItem);
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
