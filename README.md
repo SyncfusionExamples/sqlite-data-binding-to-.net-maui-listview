@@ -1,6 +1,6 @@
-# sqlite-data-binding-to-.net-maui-listview
+# SQLite data binding to the .NET MAUI ListView (SfListView)
 
-SQLite data binding to the .NET MAUI ListView.
+This example describes how to perform SQLite data binding to the .NET MAUI ListView (SfListView).
 
 ## Sample
 
